@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../images/logo.svg";
 const Header = () => {
   return (
-    <header className="bg-[#1C2B35] w-[100%]">
+    <header className="fixed top-0 z-10 bg-[#1C2B35] w-[100%]">
       <div className="navbar w-[96%] max-w-[1400px] h-[80px] mx-auto">
         <div className="navbar-start flex-1">
           <div className="dropdown">
@@ -46,7 +46,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <a href="index.html">
+          <a href="/">
             <img src={logo} alt="Ema John" />
           </a>
         </div>
