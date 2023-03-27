@@ -30,7 +30,7 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a href="/home">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>
                 <a href="/order">Order</a>
@@ -52,7 +52,7 @@ const Header = () => {
         </div>
         <ul className="hidden lg:flex  justify-center items-center gap-8 text-white">
           <li>
-            <a className="hover:text-orange-300" href="/home">
+            <a className="hover:text-orange-300" href="/">
               Home
             </a>
           </li>
