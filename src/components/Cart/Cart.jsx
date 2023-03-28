@@ -1,8 +1,13 @@
 import React from "react";
 
 const Cart = ({ cart }) => {
-  const totalPrice = cart.reduce((p, c) => p + c.price, 0);
-  const totalShipping = cart.reduce((p, c) => p + c.shipping, 0);
+  // for (let product of cart) {
+  //   product.quantity = product.quantity || 1;
+  // }
+
+  const totalPrice = cart.reduce((p, c) => p + c.price * c.quantity, 0);
+  const totalShipping = cart.reduce((p, c) => p + c.shipping * c.quantity, 0);
+  const quantity = cart.reduce((p, c) => p + c.quantity, 0);
   const tax = totalPrice * 0.05;
   const grandTotal = totalPrice + totalShipping + tax;
 
@@ -12,7 +17,7 @@ const Cart = ({ cart }) => {
         Order Summery
       </h2>
       <div className="text-[#2A414F] text-lg mt-12 space-y-4 pl-2">
-        <p>Selected Items: {cart.length}</p>
+        <p>Selected Items: {quantity}</p>
         <p>Total Price: ${totalPrice}</p>
         <p>Total Shipping Charge: ${totalShipping}</p>
         <p>Tax: ${tax.toFixed(2)}</p>
