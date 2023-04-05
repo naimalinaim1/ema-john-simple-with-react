@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../images/logo.svg";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="fixed top-0 z-10 bg-[#1C2B35] w-[100%]">
@@ -30,51 +31,51 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="/order">Order</a>
+                <Link to="/order">Order</Link>
               </li>
               <li>
-                <a href="/order-review">Order Review</a>
+                <Link to="/order-review">Order Review</Link>
               </li>
               <li>
-                <a href="/inventory">Manage Inventory</a>
+                <Link to="/inventory">Manage Inventory</Link>
               </li>
               <li>
-                <a href="/login">Login</a>
+                <Link to="/login">Login</Link>
               </li>
             </ul>
           </div>
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="Ema John" />
-          </a>
+          </Link>
         </div>
         <ul className="hidden lg:flex  justify-center items-center gap-8 text-white">
           <li>
-            <a className="hover:text-orange-300" href="/">
+            <Link className="hover:text-orange-300" to="/">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="hover:text-orange-300" href="/order">
+            <Link className="hover:text-orange-300" to="/order">
               Order
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="hover:text-orange-300" href="/order-review">
+            <Link className="hover:text-orange-300" to="/order-review">
               Order Review
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="hover:text-orange-300" href="/inventory">
+            <Link className="hover:text-orange-300" to="/inventory">
               Manage Inventory
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="hover:text-orange-300" href="/login">
+            <Link className="hover:text-orange-300" to="/login">
               Login
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
