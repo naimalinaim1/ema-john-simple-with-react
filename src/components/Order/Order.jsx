@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import {
+  addToDb,
+  deleteShoppingCart,
+  getShoppingCart,
+} from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
+import { Link } from "react-router-dom";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Order = () => {
   const [products, setProducts] = useState([]);
@@ -44,6 +51,11 @@ const Order = () => {
     addToDb(product.id);
   };
 
+  const handleClearCart = () => {
+    setCart([]);
+    deleteShoppingCart();
+  };
+
   return (
     <div className="mt-40 mb-20 relative grid grid-cols-[1fr_270px] gap-5 max-w-[1440px] mx-auto pl-6 2xl:pl-0">
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 md:pl-20 lg:pl-0">
@@ -59,7 +71,13 @@ const Order = () => {
         className="fixed right-0 top-20 w-[270px] h-screen"
         style={{ background: "rgba(255, 153, 0, 0.3)" }}
       >
-        <Cart cart={cart} />
+        <Cart handleClearCart={handleClearCart} cart={cart}>
+          <Link to="/order-review">
+            <button className="mx-2 mt-2 btn btn-warning flex items-center justify-between w-[93%]">
+              Order Review <FontAwesomeIcon icon={faArrowRight} />
+            </button>
+          </Link>
+        </Cart>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, handleClearCart, children }) => {
   // for (let product of cart) {
   //   product.quantity = product.quantity || 1;
   // }
@@ -21,10 +23,18 @@ const Cart = ({ cart }) => {
         <p>Total Price: ${totalPrice}</p>
         <p>Total Shipping Charge: ${totalShipping}</p>
         <p>Tax: ${tax.toFixed(2)}</p>
-        <h2 className="text-[#1C2B35] text-xl font-bold pt-6">
+        <h2 className="text-[#1C2B35] text-xl font-bold pt-2">
           Grand Total: ${grandTotal.toFixed(2)}
         </h2>
       </div>
+      <button
+        onClick={handleClearCart}
+        className="mx-2 mt-12 btn btn-error flex items-center justify-between w-[93%]"
+      >
+        Clear Cart
+        <FontAwesomeIcon icon={faTrashAlt} />
+      </button>
+      {children}
     </div>
   );
 };

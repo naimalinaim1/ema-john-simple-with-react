@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Cart from "../Cart/Cart";
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import ReviewItem from "../ReviewItem/ReviewItem";
-import { removeFromDb } from "../../utilities/fakedb";
+import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 
 const OrderReview = () => {
   const savedCart = useLoaderData();
@@ -12,6 +14,11 @@ const OrderReview = () => {
     const reamingProduct = cart.filter((cart) => cart.id !== id);
     setCart(reamingProduct);
     removeFromDb(id);
+  };
+
+  const handleClearCart = () => {
+    setCart([]);
+    deleteShoppingCart();
   };
 
   return (
@@ -29,7 +36,14 @@ const OrderReview = () => {
         className="fixed right-0 top-20 w-[270px] h-screen"
         style={{ background: "rgba(255, 153, 0, 0.3)" }}
       >
-        <Cart cart={cart} />
+        <Cart handleClearCart={handleClearCart} cart={cart}>
+          <Link to="/checkout">
+            <button className="mx-2 mt-2 btn btn-warning flex items-center justify-between w-[93%]">
+              Proceed Checkout
+              <FontAwesomeIcon icon={faCreditCard} />
+            </button>
+          </Link>
+        </Cart>
       </div>
     </div>
   );

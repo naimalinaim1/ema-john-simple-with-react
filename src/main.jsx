@@ -8,6 +8,7 @@ import OrderReview from "./components/OrderReview/OrderReview";
 import Inventory from "./components/Inventory/Inventory";
 import Login from "./components/Login/Login";
 import cardProductLoader from "./loaders/cardProductLoader";
+import CheckOut from "./components/CheckOut/CheckOut";
 
 // react router
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckOut />,
       },
     ],
   },
