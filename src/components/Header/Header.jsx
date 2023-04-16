@@ -43,6 +43,9 @@ const Header = () => {
                 <Link to="/inventory">Manage Inventory</Link>
               </li>
               <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+              <li>
                 <Link to="/login">Login</Link>
               </li>
             </ul>
@@ -70,6 +73,11 @@ const Header = () => {
           <li>
             <Link className="hover:text-orange-300" to="/inventory">
               Manage Inventory
+            </Link>
+          </li>
+          <li>
+            <Link className="hover:text-orange-300" to="/signup">
+              Sign Up
             </Link>
           </li>
           <li>

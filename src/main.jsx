@@ -9,6 +9,7 @@ import Inventory from "./components/Inventory/Inventory";
 import Login from "./components/Login/Login";
 import cardProductLoader from "./loaders/cardProductLoader";
 import CheckOut from "./components/CheckOut/CheckOut";
+import SignUp from "./components/SignUp/SignUp";
 
 // react router
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/inventory",
         element: <Inventory />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
       {
         path: "/login",
