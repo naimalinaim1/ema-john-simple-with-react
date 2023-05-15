@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
   const [error, setError] = useState("");
+  const { createUser } = useContext(AuthContext);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -10,8 +12,11 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
-    console.log(email, password, confirmPassword);
 
+    // clear error state
+    setError("");
+
+    // check form validate
     if (!email.includes("@")) {
       setError("Email input filed required");
       return;
@@ -22,6 +27,16 @@ const SignUp = () => {
       setError("Password must be 6 character or longer");
       return;
     }
+
+    // create user with email and password
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
   };
 
   return (

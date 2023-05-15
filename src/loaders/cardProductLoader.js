@@ -1,7 +1,7 @@
 import { getShoppingCart } from "../utilities/fakedb";
 
 const cardProductLoader = async () => {
-  const loadedProducts = await fetch("products.json");
+  const loadedProducts = await fetch("http://localhost:5000/products");
   const products = await loadedProducts.json();
 
   const storedCart = getShoppingCart();
@@ -9,7 +9,7 @@ const cardProductLoader = async () => {
 
   for (const id in storedCart) {
     if (Object.hasOwnProperty.call(storedCart, id)) {
-      const addedProduct = products.find((pd) => pd.id === id);
+      const addedProduct = products.find((pd) => pd._id === id);
       const quantity = storedCart[id];
       if (addedProduct) {
         addedProduct.quantity = quantity;

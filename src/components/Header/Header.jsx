@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 const Header = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    signOutUser()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
   return (
     <header className="fixed top-0 z-10 bg-[#1C2B35] w-[100%]">
       <div className="navbar w-[96%] max-w-[1400px] h-[80px] mx-auto">
@@ -42,12 +51,24 @@ const Header = () => {
               <li>
                 <Link to="/inventory">Manage Inventory</Link>
               </li>
-              <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
+              {user ? (
+                <>
+                  <li>
+                    <span onClick={handleLogOut} className="cursor-pointer">
+                      Log Out
+                    </span>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/signup">Sign Up</Link>
+                  </li>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <Link to="/">
@@ -75,16 +96,31 @@ const Header = () => {
               Manage Inventory
             </Link>
           </li>
-          <li>
-            <Link className="hover:text-orange-300" to="/signup">
-              Sign Up
-            </Link>
-          </li>
-          <li>
-            <Link className="hover:text-orange-300" to="/login">
-              Login
-            </Link>
-          </li>
+          {user ? (
+            <>
+              <li>
+                <span
+                  onClick={handleLogOut}
+                  className="hover:text-orange-300 cursor-pointer"
+                >
+                  Log Out
+                </span>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link className="hover:text-orange-300" to="/signup">
+                  Sign Up
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-orange-300" to="/login">
+                  Login
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </header>

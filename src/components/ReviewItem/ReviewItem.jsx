@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const ReviewItem = ({ product, handleRemoveFromCart }) => {
-  const { id, name, img, quantity, price } = product;
+  const { _id, name, img, quantity, price } = product;
 
   return (
     <div className="flex items-center  gap-3 w-[580px] border border-gray-400 rounded mb-4 p-2">
@@ -19,7 +19,7 @@ const ReviewItem = ({ product, handleRemoveFromCart }) => {
       </div>
       <div className="flex-grow mx-2 text-right">
         <button
-          onClick={() => handleRemoveFromCart(id)}
+          onClick={() => handleRemoveFromCart(_id)}
           className="w-14 h-14 rounded-full bg-red-100"
         >
           <FontAwesomeIcon

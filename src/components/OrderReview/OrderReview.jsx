@@ -11,7 +11,7 @@ const OrderReview = () => {
   const [cart, setCart] = useState(savedCart);
 
   const handleRemoveFromCart = (id) => {
-    const reamingProduct = cart.filter((cart) => cart.id !== id);
+    const reamingProduct = cart.filter((cart) => cart._id !== id);
     setCart(reamingProduct);
     removeFromDb(id);
   };
@@ -26,7 +26,7 @@ const OrderReview = () => {
       <div className="mx-auto">
         {cart.map((product) => (
           <ReviewItem
-            key={product.id}
+            key={product._id}
             handleRemoveFromCart={handleRemoveFromCart}
             product={product}
           />
